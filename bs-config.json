@@ -1,0 +1,6 @@
+{
+  "port": 8000,
+  "files": ["./src/**/*.{jade,htm,css,js}"],
+  "index.html":"index.jade",
+  "server": { "baseDir": "./src" }
+}
