@@ -3,13 +3,15 @@ contract landTitle {
     
    struct Deeds{
        string owner_name;
+       string citizenship;  
        string land_type;
+       string province;
        string district;
        string municipality;
        uint ward_no;
        uint plot_no;
    }
-   
+    
     mapping(uint=>Deeds) register_id;
     mapping(uint=>string) new_owner;
     
@@ -38,7 +40,7 @@ contract landTitle {
     }
     
     function getDetails(uint _id) view public returns (string memory name, string memory land , string memory district , string memory municipality ,uint ward, uint  plot ) {
-         name=register_id[_id].owner_name;
+        name=register_id[_id].owner_name;
         land=register_id[_id].land_type;
         district=register_id[_id].district;
          municipality=register_id[_id].municipality;
@@ -62,8 +64,9 @@ contract landTitle {
         return true;
     }
 
-    function changeOwnership(uint id, string memory owner_new) public verifyOwner() returns(bool){
+    function changeOwnership(uint id, string memory owner_new, string memory citizen_ship ) public verifyOwner() returns(bool){
         register_id[id].owner_name=owner_new;
+        register_id[id].citizenship=citizen_ship;
         return true;
     }       
 }
